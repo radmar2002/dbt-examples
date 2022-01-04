@@ -8,7 +8,26 @@ models:
         description: "The primary key for this table"
         tests:
           - unique
+
+  - name: playing_with_tests
+    description: "Asignment 2"
+    columns:
+      - name: c_custkey
+        description: "c_custkey from this table"
+        tests:
+          - unique
           - not_null
+      - name: c_mktsegment
+        tests:
+          - accepted_values:
+              values:
+                [
+                  "BUILDING",
+                  "AUTOMOBILE",
+                  "MACHINERY",
+                  "HOUSEHOLD",
+                  "FURNITURE",
+                ]
 
   - name: my_second_dbt_model
     description: "A starter dbt model"
@@ -18,6 +37,9 @@ models:
         tests:
           - unique
           - not_null
+          - relationships:
+              to: ref('my_first_dbt_model')
+              field: id
   - name: snowflake_customer_purchases
     description: "The total purchases for each customer in snowflake sample data"
     columns:
