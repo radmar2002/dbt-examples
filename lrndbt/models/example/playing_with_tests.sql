@@ -1,7 +1,7 @@
 {{ config(materialized='table') }}
 
 with complete_data as (
-    select * from "SNOWFLAKE_SAMPLE_DATA"."TPCH_SF10"."CUSTOMER"
+    select * from "SNOWFLAKE_SAMPLE_DATA"."TPCH_SF1"."CUSTOMER"
 )
 
 select * 

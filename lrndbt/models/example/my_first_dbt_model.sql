@@ -11,11 +11,11 @@
 
 with source_data as (
 
-    select 1 as id
+    select 1 as id, 'NY' as state, '2022-02-03 00:02:00.000'::timestamp as updated_at
     union all
-    select null as id
+    select null as id, 'CT' as state, '2022-02-01 00:01:00.000'::timestamp as updated_at
     union all
-    select 3 as id
+    select 3 as id, 'VT' as state, '2022-02-01 00:01:00.000'::timestamp as updated_at
 
 )
 

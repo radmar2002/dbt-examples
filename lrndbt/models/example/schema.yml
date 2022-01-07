@@ -9,25 +9,25 @@ models:
         tests:
           - unique
 
-  - name: playing_with_tests
-    description: "Asignment 2"
-    columns:
-      - name: c_custkey
-        description: "c_custkey from this table"
-        tests:
-          - unique
-          - not_null
-      - name: c_mktsegment
-        tests:
-          - accepted_values:
-              values:
-                [
-                  "BUILDING",
-                  "AUTOMOBILE",
-                  "MACHINERY",
-                  "HOUSEHOLD",
-                  "FURNITURE",
-                ]
+  # - name: playing_with_tests
+  #   description: "Asignment 2"
+  #   columns:
+  #     - name: c_custkey
+  #       description: "c_custkey from this table"
+  #       tests:
+  #         - unique
+  #         - not_null
+  #     - name: c_mktsegment
+  #       tests:
+  #         - accepted_values:
+  #             values:
+  #               [
+  #                 "BUILDING",
+  #                 "AUTOMOBILE",
+  #                 "MACHINERY",
+  #                 "HOUSEHOLD",
+  #                 "FURNITURE",
+  #               ]
 
   - name: my_second_dbt_model
     description: "A starter dbt model"
@@ -57,3 +57,16 @@ models:
         test:
           - unique
           - not_null
+
+sources:
+  - name: sample
+    database: snowflake_sample_data
+    schema: tpch_sf1
+    tables:
+      - name: customer
+        columns:
+          - name: c_custkey
+            tests:
+              - unique
+              - not_null
+      - name: orders
